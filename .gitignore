@@ -1,0 +1,25 @@
+# Object files
+*.o
+
+# Executables
+client/CL
+client/driver
+server/SV
+server/sv_zz
+
+# Archives
+*.zip
+
+# IPC key files
+/tmp/CleSrv
+/tmp/CleClt
+
+# Editor and IDE files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
