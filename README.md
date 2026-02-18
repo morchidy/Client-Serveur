@@ -1,6 +1,6 @@
 # Client-Server IPC System
 
-A multi-process client-server application in C that demonstrates inter-process communication (IPC) using POSIX and System V mechanisms. Built as part of a real-time systems course (SEPC -- Systemes d'Exploitation et Programmation Concurrente).
+A multi-process client-server application in C that demonstrates inter-process communication (IPC) using POSIX and System V mechanisms. Built as part of a real-time systems course (SEPC -- Systemes d'Exploitation et Programmation Concurrente) at [Phelma - Grenoble INP](https://phelma.grenoble-inp.fr/en).
 
 The server generates real-time data on two independent channels and broadcasts availability to connected clients through signals. Each client reads the data from shared memory, processes it through an internal pipeline of cooperating processes, and displays the results.
 
@@ -15,21 +15,20 @@ The server generates real-time data on two independent channels and broadcasts a
 - [Build](#build)
 - [Usage](#usage)
 - [Configuration](#configuration)
-- [License](#license)
 
 
 ## Architecture
 
 The system follows a multi-process architecture on both sides.
 
-**Server** (provided as course material) -- spawns two child processes:
+**Server** spawns two child processes:
 
 | Process | Responsibility |
 |---|---|
 | Receptionist | Handles client connection and disconnection requests via message queues |
 | Data Generator | Produces data on two channels at one-second intervals, writes to shared memory, and signals all connected clients |
 
-**Client** (implemented from scratch) -- spawns two child processes alongside the parent:
+**Client** spawns two child processes alongside the parent:
 
 | Process | Responsibility |
 |---|---|
@@ -160,8 +159,3 @@ Key parameters are defined in `client/CL_def.h` and `server/SV_def.h`:
 | `NCL_MAX` | 10 | Maximum number of simultaneous clients |
 | `BUF_SZ` | 3600 | Size of each channel's circular buffer (number of integers) |
 | `L_MSG` | 200 | Maximum message length in bytes |
-
-
-## License
-
-This project was developed for educational purposes as part of the SEPC course curriculum.
